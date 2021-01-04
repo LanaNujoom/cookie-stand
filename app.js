@@ -1,8 +1,10 @@
 'use strict';
 
-var hoursArr = ["6 am", "7 am", "8 am", " 9 am", "10 am", "11 am", "12 am", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm", "6 pm", "7 pm"],
+var hoursArr = ["6 am", "7 am", "8 am", " 9 am", "10 am", "11 am", "12 am", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm", "6 pm", "7 pm"];
 
-function getRandomCustomersNumber(min, max) {
+function getRandomCustomersNumber(min,max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
     var result = Math.floor(Math.random() * (max - min + 1) + min);
     return result;
 }
@@ -19,14 +21,16 @@ var seattle = {
 
 
         for (let index = 0; index < hoursArr.length; index++) {
-            var result = getRandomCustomersNumber(this.minCust, this.maxCust)
-            var totalPerHour = result * this.avgCookieSale,
-            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour
+            var result = getRandomCustomersNumber(this.minCust, this.maxCust);
+            var totalPerHour = result * parseInt(this.avgCookieSale);
+            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour;
         }
     }
 };
 
+seattle.getAvgcookiesPerHour();
 
+// console.log(seattle)
 
 
 var tokyo = {
@@ -40,12 +44,14 @@ var tokyo = {
 
 
         for (let index = 0; index < hoursArr.length; index++) {
-            var result = getRandomCustomersNumber(this.minCust, this.maxCust)
-            var totalPerHour = result * this.avgCookieSale,
-            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour
+            var result = getRandomCustomersNumber(this.minCust, this.maxCust);
+            var totalPerHour = result * parseInt(this.avgCookieSale);
+            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour;
         }
     }
 };
+
+tokyo.getAvgcookiesPerHour();
 
 
 var dubai = {
@@ -59,12 +65,14 @@ var dubai = {
 
 
         for (let index = 0; index < hoursArr.length; index++) {
-            var result = getRandomCustomersNumber(this.minCust, this.maxCust)
-            var totalPerHour = result * this.avgCookieSale,
-            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour
+            var result = getRandomCustomersNumber(this.minCust, this.maxCust);
+            var totalPerHour = result * parseInt(this.avgCookieSale);
+            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour;
         }
     }
 };
+
+dubai.getAvgcookiesPerHour();
 
 
 var paris = {
@@ -77,12 +85,14 @@ var paris = {
     getAvgcookiesPerHour: function () {
 
         for (let index = 0; index < hoursArr.length; index++) {
-            var result = getRandomCustomersNumber(this.minCust, this.maxCust)
-            var totalPerHour = result * this.avgCookieSale,
-            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour
+            var result = getRandomCustomersNumber(this.minCust, this.maxCust);
+            var totalPerHour = result * parseInt(this.avgCookieSale);
+            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour;
         }
     }
 };
+
+paris.getAvgcookiesPerHour();
 
 
 var lima = {
@@ -95,25 +105,33 @@ var lima = {
     getAvgcookiesPerHour: function () {
 
         for (let index = 0; index < hoursArr.length; index++) {
-            var result = getRandomCustomersNumber(this.minCust, this.maxCust)
-            var totalPerHour = result * this.avgCookieSale,
-            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour
+            var result = getRandomCustomersNumber(this.minCust, this.maxCust);
+            var totalPerHour = result * parseInt(this.avgCookieSale);
+            console.log(this.resultPerHourArr.length)
+            this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour;
         }
     }
 };
 
+lima.getAvgcookiesPerHour();
+
 
 function render(shopObject) {
 
-    var parentElement = document.getElementsByTagName('body');
+    var parentElement = document.getElementById('root');
+    // console.log(parentElement);
     var h1 = document.createElement('h1');
+    // console.log(h1);
+    console.log(shopObject.location);
     h1.textContent = shopObject.location;
-    parentElement.appendchild(h1);
+    // console.log(h1);
+    parentElement.appendChild(h1);
     var ul = document.createElement('ul');
-    parentElement.appendchild(ul);
+    parentElement.appendChild(ul);
+    
 
 
-    for (i = 0; i < hoursArr.length; i++) {
+    for (var i = 0; i < hoursArr.length; i++) {
 
         // hoursArr[i] + ':' + shopObject.resultPerHourArr[i]
         // create eleement bl dommun ordered list for each section
@@ -121,8 +139,8 @@ function render(shopObject) {
 
 
         var li = document.createElement('li');
-        li.textContent = housArr[i] + ':' + shopObject.resultPerHourArr[i];
-        ul.appendchild(li);
+        li.textContent = hoursArr[i] + ':' + shopObject.resultPerHourArr[i];
+        ul.appendChild(li);
 
 
 
@@ -131,10 +149,15 @@ function render(shopObject) {
 
     }
 
+    console.log('end')
+
 }
+
 
 var shops = [seattle, tokyo, dubai, paris, lima];
 for (var i = 0; i < shops.length; i++) {
+    console.log(i,shops[i],shops.length)
+
     render(shops[i]);
 }
 
