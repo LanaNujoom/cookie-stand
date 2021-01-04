@@ -17,6 +17,7 @@ function Branch(passedLocation,passedMinCust,passedMaxCust,passedAvgCookieSale){
     this.maxCust = passedMaxCust;
     this.avgCookieSale = passedAvgCookieSale;
     this.resultPerHourArr = [];
+    this.total = 0;
     // console.log('this.resultPerHourArr  >>>', this.resultPerHourArr )
     this.getAvgcookiesPerHour = function(){
         
@@ -24,7 +25,8 @@ function Branch(passedLocation,passedMinCust,passedMaxCust,passedAvgCookieSale){
             var result = getRandomCustomersNumber(this.minCust, this.maxCust);
             var totalPerHour = result * parseInt(this.avgCookieSale);
             this.resultPerHourArr[this.resultPerHourArr.length] = totalPerHour;
-            
+            this.total = this.total + totalPerHour;
+
         }
 
 
@@ -58,6 +60,20 @@ console.log(paris);
 var lima = new Branch('Lima',2,16,4.6);
 lima.getAvgcookiesPerHour();
 console.log(lima);
+
+
+
+var hourlyTotals = [];
+
+for (let index = 0; index < hoursArr.length; index++){
+
+    var currentTotal = seattle.resultPerHourArr[i] + tokyo.resultPerHourArr[i] + dubai.resultPerHourArr[i]+ paris.resultPerHourArr[i]+ lima.resultPerHourArr[i];
+
+    hourlyTotals[i] = currentTotal;
+
+
+}
+
 
 
 
