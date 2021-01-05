@@ -62,28 +62,28 @@ lima.getAvgcookiesPerHour();
 // console.log(lima);
 
 
-Branch.prototype.hourlyTotal = function () {
-    var hourlyTotals = [];
+// Branch.prototype.hourlyTotal = function () {
+//     var hourlyTotals = [];
 
-    for (let index = 0; index < hoursArr.length; index++) {
+//     for (let index = 0; index < hoursArr.length; index++) {
 
-        var currentTotal = seattle.resultPerHourArr[i] + tokyo.resultPerHourArr[i] + dubai.resultPerHourArr[i] + paris.resultPerHourArr[i] + lima.resultPerHourArr[i];
+//         var currentTotal = seattle.resultPerHourArr[i] + tokyo.resultPerHourArr[i] + dubai.resultPerHourArr[i] + paris.resultPerHourArr[i] + lima.resultPerHourArr[i];
 
-        hourlyTotals[i] = currentTotal;
+//         hourlyTotals[i] = currentTotal;
 
 
-    }
+//     }
 
-}
+// }
 
 
 var parentElement = document.getElementById('root');
-console.log(parentElement);
+// console.log(parentElement);
 var h1 = document.createElement('h1');
 // console.log(h1);
 // console.log(shopObject.location);
 h1.textContent = 'Branches';
-console.log(h1);
+// console.log(h1);
 parentElement.appendChild(h1);
 var table = document.createElement('table');
 parentElement.appendChild(table);
@@ -101,7 +101,7 @@ Branch.prototype.renderHeader = function () {
     headerEmpty.textContent = '';
     row1.appendChild(headerEmpty);
 
-    console.log(headerEmpty);
+    // console.log(headerEmpty);
 
     for (var i = 0; i < hoursArr.length; i++) {
 
@@ -110,7 +110,7 @@ Branch.prototype.renderHeader = function () {
         tableHeader.textContent = hoursArr[i];
         // + ':' + shopObject.resultPerHourArr[i];
         row1.appendChild(tableHeader);
-        console.log(tableHeader);
+        // console.log(tableHeader);
     }
 
     var totalCell = document.createElement('th');
@@ -118,7 +118,7 @@ Branch.prototype.renderHeader = function () {
     totalCell.textContent = 'Daily Location Total';
     row1.appendChild(totalCell);
 
-    console.log(totalCell);
+    // console.log(totalCell);
 
     // console.log('end')
 
@@ -138,7 +138,7 @@ Branch.prototype.renderRows = function () {
         tableHeader2.textContent = this.resultPerHourArr[i] ;
         // + ':' + shopObject.resultPerHourArr[i];
         row2.appendChild(tableHeader2);
-        console.log(tableHeader2);
+        // console.log(tableHeader2);
     }
 
     var header2Daily = document.createElement('td');
@@ -146,17 +146,58 @@ Branch.prototype.renderRows = function () {
     row2.appendChild(header2Daily);
 }
 
+// Branch.prototype.renderTotals = function () {
 
-// var table = document.createElement('table');
-//     article.appendChild(table);
+   
 
-//     var tableFirstRow = document.createElement('tr');
-//     table.appendChild(tableFirstRow);
+//     // var header2Daily = document.createElement('td');
+//     // header2Daily.textContent = this.total;
+//     // row2.appendChild(header2Daily);
+// }
 
-//     var headerOne = document.createElement('th');
 
-//     headerOne.textContent = 'Is good with dogs';
-//     tableFirstRow.appendChild(headerOne);
+
+Branch.prototype.hourlyTotal = function() {
+        var hourlyTotals = [];
+    
+        for (let index = 0; index < hoursArr.length; index++) {
+    
+            var currentTotal = seattle.resultPerHourArr[index] + tokyo.resultPerHourArr[index] + dubai.resultPerHourArr[index] + paris.resultPerHourArr[index] + lima.resultPerHourArr[index];
+           
+
+            hourlyTotals[index] = currentTotal;
+    
+    
+        }
+
+
+
+
+
+
+        var row3 = document.createElement('tr');
+        table.appendChild(row3);
+        var Header3 = document.createElement('th');
+        Header3.textContent = 'Totals';
+        row3.appendChild(Header3);
+    
+        for (var i = 0; i < hoursArr.length; i++) {
+    
+            var tableHeader3 = document.createElement('td');
+            tableHeader3.textContent = hourlyTotals[i];
+            // + ':' + shopObject.resultPerHourArr[i];
+            row3.appendChild(tableHeader3);
+            // console.log(tableHeader3);
+        }
+
+        
+        console.log(hourlyTotals);
+    
+    }
+
+
+
+
 
 
 seattle.renderHeader();
@@ -167,6 +208,10 @@ tokyo.renderRows();
 dubai.renderRows();
 paris.renderRows();
 lima.renderRows();
+
+// seattle.renderTotals();
+
+seattle.hourlyTotal();
 
 // var shops = [seattle, tokyo, dubai, paris, lima];
 // for (var i = 0; i < shops.length; i++) {
