@@ -189,12 +189,17 @@ function render(shopObject) {
     // console.log(parentElement);
     var h1 = document.createElement('h1');
     // console.log(h1);
-    console.log(shopObject.location);
-    h1.textContent = shopObject.location;
+    // console.log(shopObject.location);
+    h1.textContent = 'Branches';
     // console.log(h1);
     parentElement.appendChild(h1);
-    var ul = document.createElement('ul');
-    parentElement.appendChild(ul);
+    var table = document.createElement('table');
+    parentElement.appendChild(table);
+    var tableRow1 = document.createElement('tr');
+    table.appendChild(tableRow1);
+    var headerEmpty = document.createElement('th');
+    headerEmpty.textContent = '';
+    tableRow1.appendChild(headerEmpty);
 
 
 
@@ -205,9 +210,11 @@ function render(shopObject) {
         // print value --->
 
 
-        var li = document.createElement('li');
-        li.textContent = hoursArr[i] + ':' + shopObject.resultPerHourArr[i];
-        ul.appendChild(li);
+        var header = document.createElement('th');
+        header.textContent = hoursArr[i]; 
+        // + ':' + shopObject.resultPerHourArr[i];
+        tableRow1.appendChild(header);
+        
 
 
 
@@ -229,3 +236,10 @@ for (var i = 0; i < shops.length; i++) {
 }
 
 
+
+function firstRender(){
+
+
+
+
+}
