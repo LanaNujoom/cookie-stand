@@ -113,6 +113,7 @@ Branch.prototype.renderRows = function () {
 
 
 // Calculate Daily Total  & Total of Totals
+
 function totalHours() {
 
     var row3 = document.createElement('tr');
