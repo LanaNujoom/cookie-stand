@@ -162,3 +162,25 @@ renderLocations();
 
 
 totalHours();
+
+var locationForm = document.getElementById('branchForm');
+locationForm.addEventListener('submit', function (event){
+
+    event.preventDefault(); 
+
+    var location = event.target.location.value;
+    var min = event.target.min.value;
+    var max =event.target.max.value;
+    var avg = event.target.avg.value;
+
+    var newLocation = new Branch(location, min, max, avg);
+    newLocation.getAvgcookiesPerHour();
+    table.innerHTML = ''
+    newLocation.renderHeader();
+    
+    renderLocations();
+   
+    totalHours();
+    
+});
+
